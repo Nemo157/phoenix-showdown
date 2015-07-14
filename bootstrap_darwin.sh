@@ -42,6 +42,15 @@ brew install caskroom/cask/brew-cask
 brew cask install java
 (cd play/benchmarker && ./activator clean stage)
 
+# bootstrap aspnet.mvc
+brew tap aspnet/dnx
+brew update
+brew install dnvm
+source dnvm.sh
+dnvm upgrade -u
+(cd aspnet.mvc/benchmarker && dnu restore)
+(cd aspnet.mvc/benchmarker && dnu build)
+
 # install forego/wrk to do the benchmarking
 brew install forego
 brew install wrk
